@@ -54,6 +54,9 @@ mioProdotto.SetPrezzo(0.50f);
 Console.WriteLine(mioProdotto.GetPrezzo());
 mioProdotto.SetIva(22);
 Console.WriteLine(mioProdotto.GetIva());
+Console.WriteLine(mioProdotto.GetPrezzoIva());
+Console.WriteLine(mioProdotto.GetNomeCodice());
+
 
 public class Prodotto
 {
@@ -91,7 +94,11 @@ public class Prodotto
     }
     public float GetPrezzoIva()
     {
-        return this.prezzo + this.iva;
+        return (this.prezzo * this.iva) / 100 + this.prezzo;
+    }
+    public string GetNomeCodice()
+    {
+        return this.nome + ", " + this.codice;
     }
     //Setter
     public void SetNome(string nome)
