@@ -33,71 +33,112 @@ Console.WriteLine("Prezzo con iva: " + mioProdotto.GetPrezzoIva());
 Console.WriteLine("Nome e codice: " + mioProdotto.GetNomeCodice());
 Console.WriteLine("bonus pad left: " + mioProdotto.PadLeft());
 
+//---- Forma estesa ----
+
+//public class Prodotto
+//{
+//    private int codice;
+//    private string nome;
+//    private string descrizione;
+//    private float prezzo;
+//    private int iva;
+
+//    public Prodotto()
+//    {
+//        Random rnd = new Random();
+//        codice = rnd.Next(99999999);
+//    }
+//    //Properties
+//    public int Codice
+//    {
+//        get 
+//        { 
+//            return codice; 
+//        }
+//    }
+//    public string Nome
+//    {
+//        get
+//        {
+//            return nome;
+//        }
+//        set
+//        {
+//            nome = value;
+//        }
+//    }
+//    public string Descrizione
+//    {
+//        get
+//        {
+//            return descrizione;
+//        }
+//        set
+//        {
+//            descrizione = value;
+//        }
+//    }
+//    public float Prezzo
+//    {
+//        get
+//        {
+//            return prezzo;
+//        }
+//        set
+//        {
+//            prezzo = value;
+//        }
+//    }
+//    public int Iva
+//    {
+//        get
+//        {
+//            return iva;
+//        }
+//        set
+//        {
+//            iva = value;
+//        }
+//    }
+//    public float GetPrezzoIva()
+//    {
+//        return (Prezzo * Iva) / 100 + Prezzo;
+//    }
+//    public string GetNomeCodice()
+//    {
+//        return Nome + ", " + Codice;
+//    }
+//    public string PadLeft()
+//    {
+//        //se codice.Length < 8 aggiungere zeri a sx con un ciclo for che cicli per un numero di volte inferiore a 10-codice.Length e ad ognuno aggiunga 0,
+//        //poi somma gli 0 al codice
+//        string codice = Convert.ToString(this.codice);
+//        if (codice.Length < 8)
+//        {
+//            for (int i = 0; codice.Length < 8; i++)
+//            {
+//                codice = "0" + codice;
+//            }
+//        }
+//        return codice;
+//    }
+//}
+
+
+//---- Forma contratta----
 public class Prodotto
 {
-    private int codice;
-    private string nome;
-    private string descrizione;
-    private float prezzo;
-    private int iva;
-
     public Prodotto()
     {
         Random rnd = new Random();
-        codice = rnd.Next(99999999);
+        Codice = rnd.Next(99999999);
     }
     //Properties
-    public int Codice
-    {
-        get 
-        { 
-            return codice; 
-        }
-    }
-    public string Nome
-    {
-        get
-        {
-            return nome;
-        }
-        set
-        {
-            nome = value;
-        }
-    }
-    public string Descrizione
-    {
-        get
-        {
-            return descrizione;
-        }
-        set
-        {
-            descrizione = value;
-        }
-    }
-    public float Prezzo
-    {
-        get
-        {
-            return prezzo;
-        }
-        set
-        {
-            prezzo = value;
-        }
-    }
-    public int Iva
-    {
-        get
-        {
-            return iva;
-        }
-        set
-        {
-            iva = value;
-        }
-    }
+    public int Codice { get; }
+    public string Nome { get; set; }
+    public string Descrizione { get; set; }
+    public float Prezzo { get; set; }
+    public int Iva { get; set; }
     public float GetPrezzoIva()
     {
         return (Prezzo * Iva) / 100 + Prezzo;
@@ -110,7 +151,7 @@ public class Prodotto
     {
         //se codice.Length < 8 aggiungere zeri a sx con un ciclo for che cicli per un numero di volte inferiore a 10-codice.Length e ad ognuno aggiunga 0,
         //poi somma gli 0 al codice
-        string codice = Convert.ToString(this.codice);
+        string codice = Convert.ToString(Codice);
         if (codice.Length < 8)
         {
             for (int i = 0; codice.Length < 8; i++)
