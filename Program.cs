@@ -20,20 +20,18 @@ Console.WriteLine("Hello, World!");
 //(ad esempio codice 91 diventa 00000091, mentre codice 123445567 resta come è)
 
 Prodotto mioProdotto = new Prodotto();
-Console.WriteLine("Codice prodotto: " + mioProdotto.GetCodice());
-mioProdotto.SetNome("Penna");
-Console.WriteLine("Nome prodotto: " + mioProdotto.GetNome());
-mioProdotto.SetDescrizione("è una bella penna");
-Console.WriteLine("Descrizione prodotto: " + mioProdotto.GetDescrizione());
-mioProdotto.SetPrezzo(0.50f);
-Console.WriteLine("Prezzo prodotto: " + mioProdotto.GetPrezzo());
-mioProdotto.SetIva(22);
-Console.WriteLine("Iva settata al: " + mioProdotto.GetIva() + "%");
+Console.WriteLine("Codice prodotto: " + mioProdotto.Codice);
+mioProdotto.Nome = "Penna";
+Console.WriteLine("Nome prodotto: " + mioProdotto.Nome);
+mioProdotto.Descrizione = "è una bella penna";
+Console.WriteLine("Descrizione prodotto: " + mioProdotto.Descrizione);
+mioProdotto.Prezzo = 0.50f;
+Console.WriteLine("Prezzo prodotto: " + mioProdotto.Prezzo);
+mioProdotto.Iva = 22;
+Console.WriteLine("Iva settata al: " + mioProdotto.Iva + "%");
 Console.WriteLine("Prezzo con iva: " + mioProdotto.GetPrezzoIva());
 Console.WriteLine("Nome e codice: " + mioProdotto.GetNomeCodice());
 Console.WriteLine("bonus pad left: " + mioProdotto.PadLeft());
-
-
 
 public class Prodotto
 {
@@ -48,51 +46,65 @@ public class Prodotto
         Random rnd = new Random();
         codice = rnd.Next(99999999);
     }
-    //Getter
-    public int GetCodice()
+    //Properties
+    public int Codice
     {
-        return this.codice;
+        get 
+        { 
+            return codice; 
+        }
     }
-    public string GetNome()
+    public string Nome
     {
-        return this.nome;
+        get
+        {
+            return nome;
+        }
+        set
+        {
+            nome = value;
+        }
     }
-    public string GetDescrizione()
+    public string Descrizione
     {
-        return this.descrizione;
+        get
+        {
+            return descrizione;
+        }
+        set
+        {
+            descrizione = value;
+        }
     }
-    public float GetPrezzo()
+    public float Prezzo
     {
-        return this.prezzo;
+        get
+        {
+            return prezzo;
+        }
+        set
+        {
+            prezzo = value;
+        }
     }
-    public float GetIva()
+    public int Iva
     {
-        return this.iva;
+        get
+        {
+            return iva;
+        }
+        set
+        {
+            iva = value;
+        }
     }
     public float GetPrezzoIva()
     {
-        return (this.prezzo * this.iva) / 100 + this.prezzo;
+        return (Prezzo * Iva) / 100 + Prezzo;
     }
     public string GetNomeCodice()
     {
-        return this.nome + ", " + this.codice;
-    }
-    //Setter
-    public void SetNome(string nome)
-    {
-        this.nome = nome;
-    }
-    public void SetDescrizione(string descrizione)
-    {
-        this.descrizione = descrizione;
-    }
-    public void SetPrezzo(float prezzo)
-    {
-        this.prezzo = prezzo;
-    }
-    public void SetIva(int iva)
-    {
-        this.iva = iva;
+        return Nome + ", " + Codice;
     }
     public string PadLeft()
     {
